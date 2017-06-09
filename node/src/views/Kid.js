@@ -16,11 +16,13 @@ class Kid extends JSXComponent {
 
 		this.data
 			.where('kidId', this.props.router.params.kidId)
+			.orderBy('time', 'asc')
 			.get('incidents')
 			.then(this.afterFetchIncidents_.bind(this));
 
 		this.data
 			.where('kidId', this.props.router.params.kidId)
+			.orderBy('time', 'asc')
 			.watch('incidents')
 			.on('changes', this.afterFetchIncidents_.bind(this));
 

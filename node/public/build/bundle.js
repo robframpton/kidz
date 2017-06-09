@@ -8886,9 +8886,9 @@ class Kid extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 	created() {
 		this.data = WeDeploy.data('data.' + window.location.host || window.location.hostname);
 
-		this.data.where('kidId', this.props.router.params.kidId).get('incidents').then(this.afterFetchIncidents_.bind(this));
+		this.data.where('kidId', this.props.router.params.kidId).orderBy('time', 'asc').get('incidents').then(this.afterFetchIncidents_.bind(this));
 
-		this.data.where('kidId', this.props.router.params.kidId).watch('incidents').on('changes', this.afterFetchIncidents_.bind(this));
+		this.data.where('kidId', this.props.router.params.kidId).orderBy('time', 'asc').watch('incidents').on('changes', this.afterFetchIncidents_.bind(this));
 
 		this.data.where('id', this.props.router.params.kidId).get('kids').then(this.afterFetchKid_.bind(this));
 	}
