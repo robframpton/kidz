@@ -19,20 +19,18 @@ class ListOfKidz extends JSXComponent {
 		let kidItems = kids.map(kid => {
 			return (
 				<li class="collection-item avatar">
-					<span class="circle">
-						{GENDER_EMOJI_MAP[kid.gender]}
-					</span>
+					<a href={`/kid/${kid.id}`}>
+						<span class="circle">
+							{GENDER_EMOJI_MAP[kid.gender]}
+						</span>
 
-					<span class="title">{kid.name}</span>
+						<span class="title">{kid.name}</span>
 
-					<p>
-						Birthday: {kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : ''} <br />
+						<p>
+							Birthday: {kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : ''} <br />
 
-						Rating: {kid.rating ? kid.rating : '11'}/10
-					</p>
-
-					<a href={`/kid/${kid.id}`} class="secondary-content">
-						<i class="material-icons">link</i>
+							Rating: {kid.rating ? kid.rating : '11'}/10
+						</p>
 					</a>
 				</li>
 			);
