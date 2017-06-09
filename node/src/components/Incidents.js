@@ -26,7 +26,7 @@ class Incident extends JSXComponent {
 	}
 
 	formatDate_(date) {
-		return moment(date).format('h:mm:ss a, MMMM Do');
+		return moment(date).fromNow();
 	}
 
 	formatType_(type) {
