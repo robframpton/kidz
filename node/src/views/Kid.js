@@ -3,6 +3,13 @@ import JSXComponent from 'metal-jsx';
 import AddIncident from '../components/AddIncident';
 import Incidents from '../components/Incidents';
 
+const KID_GENDER_COLOR_MAP = {
+	boy: 'blue lighten-4',
+	girl: 'pink lighten-4',
+	gorilla: 'grey lighten-2',
+	poop: 'brown lighten-2'
+}
+
 class Kid extends JSXComponent {
 	created() {
 		this.data = WeDeploy.data('data.' + window.location.host || window.location.hostname);
@@ -39,8 +46,16 @@ class Kid extends JSXComponent {
 	}
 
 	render() {
+		let classes = 'card kid row';
+
+		const {kid} = this.state;
+
+		if (kid) {
+			classes = classes + ' ' + KID_GENDER_COLOR_MAP[kid.gender];
+		}
+
 		return (
-			<div className="kid row">
+			<div class={classes}>
 				<div class="col s12">
 					{this.renderKid_()}
 				</div>
