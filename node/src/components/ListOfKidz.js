@@ -1,5 +1,6 @@
 import core from 'metal';
 import JSXComponent from 'metal-jsx';
+import moment from 'moment';
 
 class ListOfKidz extends JSXComponent {
 	render() {
@@ -10,6 +11,8 @@ class ListOfKidz extends JSXComponent {
 		let headerCSSClass = `collapsible-header ${kids.length <= 10 ? 'active' : ''}`;
 
 		let kidItems = kids.map(kid => {
+			let url = `/kid/${kid.id}`;
+
 			return (
 				<li class="collection-item avatar">
 					<span class="circle">
@@ -47,9 +50,7 @@ class ListOfKidz extends JSXComponent {
 	}
 
 	rendered() {
-		$(document).ready(function() {
-			$('.collapsible').collapsible();
-		});
+		$('.collapsible').collapsible();
 	}
 }
 

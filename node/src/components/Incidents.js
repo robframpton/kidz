@@ -31,16 +31,16 @@ class Incident extends JSXComponent {
 
 	formatType_(type) {
 		if (type === 'candy') {
-			type = 'Candy';
+			type = '🍬 Candy';
 		}
 		else if (type === 'snack') {
-			type = 'Snack';
+			type = '🍪 Snack';
 		}
 		else if (type === 'tv') {
-			type = 'TV';
+			type = '📺 TV';
 		}
 		else if (type === 'video_games') {
-			type = 'Video Games';
+			type = '🎮 Video Games';
 		}
 
 		return type;
