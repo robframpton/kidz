@@ -9,6 +9,7 @@ class AddIncident extends JSXComponent {
 		return (
 			<div class="add-incident">
 				<form onSubmit={this.handleAddIncident_.bind(this)}>
+<<<<<<< 21441284c07c2718cf59cdf83ba5b5695219c14b
 <<<<<<< 5e5a14bd1b3a4f62ee709c6f66a3e00bf575423c
 					<div class="row">
 						<div class="input-field col s6">
@@ -36,6 +37,8 @@ class AddIncident extends JSXComponent {
 						</div>
 					</div>
 =======
+=======
+>>>>>>> Add more styling
 					<select name="type">
 						<option value="candy" selected>Candy</option>
 						<option value="snack">Snack</option>
@@ -49,7 +52,6 @@ class AddIncident extends JSXComponent {
 					</select>
 
 					<button type="submit">Add</button>
->>>>>>> Add material class to form
 				</form>
 			</div>
 		);

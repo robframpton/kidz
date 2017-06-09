@@ -26,10 +26,14 @@ class Home extends JSXComponent {
 
 	render() {
 		return (
-			<div>
-				<ListOfKidz kids={this.state.kids} />
+			<div class="row">
+				<div class="col s12">
+					<ListOfKidz kids={this.state.kids} />
+				</div>
 
-				<AddNewKid />
+				<div class="col s12">
+					<AddNewKid />
+				</div>
 			</div>
 		);
 	}

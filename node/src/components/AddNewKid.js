@@ -41,27 +41,28 @@ class AddNewKid extends JSXComponent {
 				</div>
 
 				<div class="input-field col s12 m6">
-					<select class="icons" id="gender" name="gender">
+					<select id="gender" name="gender">
 						<option value="" disabled selected>Choose your Gender</option>
-						<option value="👦" data-icon="👦" class="circle">Boy</option>
-						<option value="👧" data-icon="👧" class="circle">Girl</option>
-						<option value="🦍" data-icon="🦍" class="circle">Gorilla</option>
-						<option value="💩" data-icon="💩" class="circle">Poop</option>
+						<option value="👦">Boy</option>
+						<option value="👧">Girl</option>
+						<option value="🦍">Gorilla</option>
+						<option value="💩">Poop</option>
 					</select>
 				</div>
 
 				<div class="input-field">
-					<label for="birthday">Birthday</label>
+					<label for="birthdate">Birthdate</label>
 
-					<input class="datepicker" id="birthday" name="birthday" placeholder="dd/mm/yyyy" required type="date" />
+					<input id="birthday" name="birthday" class="datepicker" type="date" />
 				</div>
 
-				<div class="input-field">
+				<p>
 					<label for="rating">How much do you love this child?</label>
+				</p>
 
-					<p class="range-field">
-						<input type="range" id="rating" name="rating" min="0" max="10" />
-					</p>
+
+				<div class="range-field">
+					<input type="range" id="rating" name="rating" min="0" max="10" />
 				</div>
 
 				{this.state.isAddingKid ?'':
@@ -74,9 +75,13 @@ class AddNewKid extends JSXComponent {
 	}
 
 	rendered() {
-		$('.datepicker').pickadate({
-			selectMonths: true, // Creates a dropdown to control month
-			selectYears: 50 // Creates a dropdown of 15 years to control year
+		$(document).ready(function() {
+			$('.datepicker').pickadate({
+				selectMonths: true, // Creates a dropdown to control month
+				selectYears: 50 // Creates a dropdown of 15 years to control year
+			});
+
+			$('select').material_select();
 		});
 	}
 }
