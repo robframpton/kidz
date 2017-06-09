@@ -10,8 +10,6 @@ class ListOfKidz extends JSXComponent {
 		let headerCSSClass = `collapsible-header ${kids.length <= 10 ? 'active' : ''}`;
 
 		let kidItems = kids.map(kid => {
-			let url = `/kid/${kid.id}`;
-
 			return (
 				<li class="collection-item avatar">
 					<span class="circle">
@@ -26,7 +24,7 @@ class ListOfKidz extends JSXComponent {
 						Rating: {kid.rating ? kid.rating : '11'}/10
 					</p>
 
-					<a href={url} class="secondary-content">
+					<a href={`/kid/${kid.id}`} class="secondary-content">
 						<i class="material-icons">link</i>
 					</a>
 				</li>

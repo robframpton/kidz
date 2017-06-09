@@ -49,6 +49,7 @@ class AddIncident extends JSXComponent {
 		const {kid} = this.props;
 
 		data.kidId = kid.id;
+		data.kidName = kid.name;
 
 		this.data
 			.create('incidents', data)

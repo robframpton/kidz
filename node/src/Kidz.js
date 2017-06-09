@@ -12,6 +12,22 @@ konami.listen(() => {
 	window.location.href = 'http://harambe.wedeploy.io';
 });
 
+WeDeploy.data('data.' + window.location.host || window.location.hostname)
+	.watch('incidents')
+	.on('changes', (data) => {
+		let latest = data.pop();
+
+		let utterThis = new SpeechSynthesisUtterance(`Parent answered
+			${latest.kidName ? latest.kidName : ''} ${latest.answer},to request
+			for ${latest.type} ${moment(latest.time).fromNow()}`);
+
+		window.speechSynthesis.speak(utterThis);
+
+		if (window.navigator.vibrate) {
+			window.navigator.vibrate(500);
+		}
+	});
+
 // Routing from JavaScript -----------------------------------------------------
 
 var Kidz = {
