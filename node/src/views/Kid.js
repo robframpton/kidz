@@ -25,12 +25,18 @@ class Kid extends JSXComponent {
 
 	render() {
 		return (
-			<div className="kid">
-				{this.renderKid_()}
+			<div className="kid row">
+				<div class="col s12">
+					{this.renderKid_()}
+				</div>
 
-				<Incidents incidents={this.state.incidents} />
+				<div class="col s12">
+					<Incidents incidents={this.state.incidents} />
+				</div>
 
-				<AddIncident kid={this.state.kid} />
+				<div class="col s12">
+					<AddIncident kid={this.state.kid} />
+				</div>
 			</div>
 		);
 	}

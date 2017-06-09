@@ -7,24 +7,38 @@ class AddIncident extends JSXComponent {
 
 	render() {
 		return (
-			<div className="add-incident">
+			<div class="add-incident">
 				<form onSubmit={this.handleAddIncident_.bind(this)}>
-					<select name="type">
-						<option value="candy" selected>Candy</option>
-						<option value="snack">Snack</option>
-						<option value="snack">Video Games</option>
-						<option value="tv">TV</option>
-					</select>
+					<div class="row">
+						<div class="input-field col s6">
+							<select name="type">
+								<option value="candy" selected>Candy</option>
+								<option value="snack">Snack</option>
+								<option value="snack">Video Games</option>
+								<option value="tv">TV</option>
+							</select>
+						</div>
 
-					<select name="answer">
-						<option value="yes">Yes</option>
-						<option value="no" selected>No</option>
-					</select>
+						<div class="input-field col s6">
+							<select name="answer">
+								<option value="yes">Yes</option>
+								<option value="no" selected>No</option>
+							</select>
+						</div>
 
-					<button type="submit">Add</button>
+						<div class="col s12">
+							<button class="btn btn-submit" type="submit">Add</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		);
+	}
+
+	rendered() {
+		$(document).ready(function() {
+			$('select').material_select();
+		});
 	}
 
 	addIncident_(data) {
