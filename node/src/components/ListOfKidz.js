@@ -6,19 +6,26 @@ class ListOfKidz extends JSXComponent {
 	render() {
 		return(
 			<div class="list-of-kids-container">
-				<ul class="list-of-kids">
+				<ul class="list-of-kids collection">
 					{this.props.kids.length > 0 ?
 						this.props.kids.map(
 							(kid) => {
 								let url = `kid/${kid.id}`;
 
 								return (
-									<li>
-										<a href={url}>
-											{kid.name}
-										</a>
+									<li class="collection-item avatar">
+										<span class="circle">{kid.gender}</span>
 
-										{kid.gender} {kid.birthday}
+										<span class="title">{kid.name}</span>
+
+										<p>
+											Birthday: {kid.birthday} <br />
+											Rating: {kid.rating}/10
+										</p>
+
+										<a href={url} class="secondary-content">
+											<i class="material-icons">link</i>
+										</a>
 									</li>
 								);
 							}
