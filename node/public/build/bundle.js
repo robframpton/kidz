@@ -9311,7 +9311,7 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 
 		let { name, gender, birthday, rating } = target;
 
-		if (name === 'harambe') {
+		if (name.value === 'harambe') {
 			window.location.href = 'http://harambe.wedeploy.io';
 		} else {
 			let utterThis = new SpeechSynthesisUtterance(`Are you sure ${name.value} is yours?`);
