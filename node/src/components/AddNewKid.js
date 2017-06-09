@@ -46,10 +46,10 @@ class AddNewKid extends JSXComponent {
 
 					<select id="gender" name="gender">
 						<option value="" disabled selected>Choose your kid's gender</option>
-						<option value="👦">Boy</option>
-						<option value="👧">Girl</option>
-						<option value="🦍">Gorilla</option>
-						<option value="💩">Poop</option>
+						<option value="boy">👦 Boy</option>
+						<option value="girl">👧 Girl</option>
+						<option value="gorilla">🦍 Gorilla</option>
+						<option value="poop">💩 Poop</option>
 					</select>
 				</div>
 
