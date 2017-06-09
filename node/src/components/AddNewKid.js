@@ -1,5 +1,6 @@
 import core from 'metal';
 import JSXComponent from 'metal-jsx';
+import BirthdaySelector from './BirthdaySelector';
 
 class AddNewKid extends JSXComponent {
 	created() {
@@ -53,9 +54,7 @@ class AddNewKid extends JSXComponent {
 				</div>
 
 				<div class="input-field">
-					<label for="birthdate">Kid's Birthdate</label>
-
-					<input id="birthday" name="birthday" class="datepicker" type="date" />
+					<BirthdaySelector />
 				</div>
 
 				<p>
