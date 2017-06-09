@@ -62,7 +62,6 @@ class AddNewKid extends JSXComponent {
 					<label for="rating">How much do you love this kid?</label>
 				</p>
 
-
 				<div class="range-field">
 					<input type="range" id="rating" name="rating" min="0" max="10" />
 				</div>

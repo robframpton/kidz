@@ -9,9 +9,17 @@ class Incident extends JSXComponent {
 		let incidentItems = incidents.map(incident => {
 			return (
 				<li class="collection-item incident">
-					<span class="incident-property">{this.formatType_(incident.type)}</span>
-					<span class={'incident-property answer-' + incident.answer}>{incident.answer}</span>
-					<span class="incident-property">{this.formatDate_(incident.time)}</span>
+					<div class="row">
+						<div class="col s4">
+							<span class="incident-property">{this.formatType_(incident.type)}</span>
+						</div>
+						<div class="col s2">
+							<span class={'incident-property answer-' + incident.answer}>{incident.answer}</span>
+						</div>
+						<div class="col s6">
+							<span class="incident-property">{this.formatDate_(incident.time)}</span>
+						</div>
+					</div>
 				</li>
 			);
 		});
