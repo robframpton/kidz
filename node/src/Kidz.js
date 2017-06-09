@@ -2,6 +2,7 @@
 
 import Component from 'metal-component';
 import Home from './views/Home';
+import Help from './views/Help';
 import Kid from './views/Kid';
 import KonamiCode from 'konami-code';
 import Router from 'metal-router';
@@ -43,6 +44,12 @@ var Kidz = {
 			element: '#container',
 			path: '/',
 			component: Home
+		});
+
+		Component.render(Router, {
+			element: '#container',
+			path: '/help',
+			component: Help
 		});
 
 		Component.render(Router, {
