@@ -40,22 +40,14 @@ class AddNewKid extends JSXComponent {
 					<input id="name" name="name" placeholder="Name" required type="text" />
 				</div>
 
-				<div class="input-field">
-					<p>
-						<input id="gorilla" name="gender" type="radio" value="🦍" /> <label for="gorilla" >🦍</label>
-					</p>
-
-					<p>
-						<input id="girl" name="gender" type="radio" value="👧" /> <label for="girl" >👧</label>
-					</p>
-
-					<p>
-						<input id="boy" name="gender" type="radio" value="👦" /> <label for="boy" >👦</label>
-					</p>
-
-					<p>
-						<input id="poop" name="gender" type="radio" value="💩" /> <label for="poop" >💩</label>
-					</p>
+				<div class="input-field col s12 m6">
+					<select class="icons" id="gender" name="gender">
+						<option value="" disabled selected>Choose your Gender</option>
+						<option value="👦" data-icon="👦" class="circle">Boy</option>
+						<option value="👧" data-icon="👧" class="circle">Girl</option>
+						<option value="🦍" data-icon="🦍" class="circle">Gorilla</option>
+						<option value="💩" data-icon="💩" class="circle">Poop</option>
+					</select>
 				</div>
 
 				<div class="input-field">
@@ -79,6 +71,13 @@ class AddNewKid extends JSXComponent {
 				}
 			</form>
 		);
+	}
+
+	rendered() {
+		$('.datepicker').pickadate({
+			selectMonths: true, // Creates a dropdown to control month
+			selectYears: 50 // Creates a dropdown of 15 years to control year
+		});
 	}
 }
 

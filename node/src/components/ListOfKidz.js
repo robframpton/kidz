@@ -20,7 +20,7 @@ class ListOfKidz extends JSXComponent {
 
 										<p>
 											Birthday: {kid.birthday} <br />
-											Rating: {kid.rating}/10
+											Rating: {kid.rating ? kid.rating : '11'}/10
 										</p>
 
 										<a href={url} class="secondary-content">
