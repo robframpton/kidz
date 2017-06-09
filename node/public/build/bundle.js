@@ -9322,7 +9322,7 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 				data.create('kids', {
 					name: name.value,
 					gender: gender.value,
-					birthday: birthday.value,
+					//birthday: birthday.value,
 					rating: rating.value
 				}).then(data => {
 					name.value = '';
@@ -9569,6 +9569,13 @@ Incident.PROPS = {
 
 
 
+const GENDER_EMOJI_MAP = {
+	boy: '👦',
+	girl: '👧',
+	gorilla: '🦍',
+	poop: '💩'
+};
+
 class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 	render() {
 		let { kids } = this.props;
@@ -9578,10 +9585,10 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 		let headerCSSClass = `collapsible-header ${kids.length <= 10 ? 'active' : ''}`;
 
 		let kidItems = kids.map(kid => {
-			return iDOMHelpers.jsxWrapper(function (_kid$gender, _kid$name, _ref, _ref2) {
+			return iDOMHelpers.jsxWrapper(function (_GENDER_EMOJI_MAP$kid, _kid$name, _ref, _ref2) {
 				IncrementalDOM.elementOpen('li', null, null, 'class', 'collection-item avatar');
 				IncrementalDOM.elementOpen('span', null, null, 'class', 'circle');
-				iDOMHelpers.renderArbitrary(_kid$gender);
+				iDOMHelpers.renderArbitrary(_GENDER_EMOJI_MAP$kid);
 				IncrementalDOM.elementClose('span');
 				IncrementalDOM.elementOpen('span', null, null, 'class', 'title');
 				iDOMHelpers.renderArbitrary(_kid$name);
@@ -9600,7 +9607,7 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 				IncrementalDOM.elementClose('i');
 				IncrementalDOM.elementClose('a');
 				return IncrementalDOM.elementClose('li');
-			}, [kid.gender, kid.name, kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11']);
+			}, [GENDER_EMOJI_MAP[kid.gender], kid.name, kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11']);
 		});
 
 		IncrementalDOM.elementOpen('ul', null, null, 'class', 'collapsible', 'data-collapsible', 'accordion');
