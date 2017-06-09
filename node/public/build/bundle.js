@@ -9262,11 +9262,17 @@ class AddIncident extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 
 		const { elements } = event.target;
 
-		this.addIncident_({
-			answer: elements.answer.value,
-			time: Date.now(),
-			type: elements.type.value
-		});
+		let utterThis = new SpeechSynthesisUtterance(`Are you sure this incident happened?`);
+
+		window.speechSynthesis.speak(utterThis);
+
+		if (confirm(`Are you sure this incident happened?`)) {
+			this.addIncident_({
+				answer: elements.answer.value,
+				time: Date.now(),
+				type: elements.type.value
+			});
+		}
 	}
 }
 
@@ -9305,19 +9311,29 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 
 		let { name, gender, birthday, rating } = target;
 
-		data.create('kids', {
-			name: name.value,
-			gender: gender.value,
-			//birthday: birthday.value,
-			rating: rating.value
-		}).then(data => {
-			name.value = '';
-			gender.value = '';
-			birthday.value = '';
-			rating.value = 10;
+		if (name === 'harambe') {
+			window.location.href = 'http://harambe.wedeploy.io';
+		} else {
+			let utterThis = new SpeechSynthesisUtterance(`Are you sure ${name.value} is yours?`);
 
-			this.setState({ isAddingKid: false });
-		});
+			window.speechSynthesis.speak(utterThis);
+
+			if (confirm(`Are you sure ${name.value} is yours?`)) {
+				data.create('kids', {
+					name: name.value,
+					gender: gender.value,
+					birthday: birthday.value,
+					rating: rating.value
+				}).then(data => {
+					name.value = '';
+					gender.value = '';
+					birthday.value = '';
+					rating.value = 10;
+
+					this.setState({ isAddingKid: false });
+				});
+			}
+		}
 	}
 
 	render() {
