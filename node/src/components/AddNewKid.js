@@ -35,14 +35,14 @@ class AddNewKid extends JSXComponent {
 		return(
 			<form class="add-new-kid-form" onSubmit={this._handleAddNewKid.bind(this)}>
 				<div class="input-field">
-					<label for="name">Name</label>
+					<label for="name">Kid's Name</label>
 
 					<input id="name" name="name" placeholder="Name" required type="text" />
 				</div>
 
 				<div class="input-field col s12 m6">
 					<select id="gender" name="gender">
-						<option value="" disabled selected>Choose your Gender</option>
+						<option value="" disabled selected>Choose your kid's gender</option>
 						<option value="👦">Boy</option>
 						<option value="👧">Girl</option>
 						<option value="🦍">Gorilla</option>
@@ -51,13 +51,13 @@ class AddNewKid extends JSXComponent {
 				</div>
 
 				<div class="input-field">
-					<label for="birthdate">Birthdate</label>
+					<label for="birthdate">Kid's Birthdate</label>
 
 					<input id="birthday" name="birthday" class="datepicker" type="date" />
 				</div>
 
 				<p>
-					<label for="rating">How much do you love this child?</label>
+					<label for="rating">How much do you love this kid?</label>
 				</p>
 
 
