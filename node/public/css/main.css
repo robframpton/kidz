@@ -19,3 +19,10 @@
 	background-color: #44DC66;
 	color: #FFF;
 }
+
+.collection .collection-item.avatar .circle {
+	align-items: center;
+	display: flex;
+	font-size: 32px;
+	justify-content: center;
+}
