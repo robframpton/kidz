@@ -1276,7 +1276,7 @@ __webpack_require__(28);
 
 var _changes = __webpack_require__(26);
 
-var _data = __webpack_require__(8);
+var _data = __webpack_require__(9);
 
 var _children = __webpack_require__(27);
 
@@ -1592,6 +1592,36 @@ exports.default = renderer;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.JSXComponent = exports.Config = exports.validators = exports.DangerouslySetHTML = undefined;
+
+var _metalState = __webpack_require__(10);
+
+var _DangerouslySetHTML = __webpack_require__(73);
+
+var _DangerouslySetHTML2 = _interopRequireDefault(_DangerouslySetHTML);
+
+var _JSXComponent = __webpack_require__(30);
+
+var _JSXComponent2 = _interopRequireDefault(_JSXComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _JSXComponent2.default;
+exports.DangerouslySetHTML = _DangerouslySetHTML2.default;
+exports.validators = _metalState.validators;
+exports.Config = _metalState.Config;
+exports.JSXComponent = _JSXComponent2.default;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.clearData = clearData;
 exports.getData = getData;
 var RENDERER_DATA = '__METAL_IC_RENDERER_DATA__';
@@ -1616,36 +1646,6 @@ function getData(component) {
   }
   return component[RENDERER_DATA];
 }
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.JSXComponent = exports.Config = exports.validators = exports.DangerouslySetHTML = undefined;
-
-var _metalState = __webpack_require__(10);
-
-var _DangerouslySetHTML = __webpack_require__(73);
-
-var _DangerouslySetHTML2 = _interopRequireDefault(_DangerouslySetHTML);
-
-var _JSXComponent = __webpack_require__(30);
-
-var _JSXComponent2 = _interopRequireDefault(_JSXComponent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _JSXComponent2.default;
-exports.DangerouslySetHTML = _DangerouslySetHTML2.default;
-exports.validators = _metalState.validators;
-exports.Config = _metalState.Config;
-exports.JSXComponent = _JSXComponent2.default;
 
 /***/ }),
 /* 10 */
@@ -3444,7 +3444,7 @@ exports.clearChanges = clearChanges;
 exports.getChanges = getChanges;
 exports.trackChanges = trackChanges;
 
-var _data = __webpack_require__(8);
+var _data = __webpack_require__(9);
 
 /**
  * Clears the changes tracked so far.
@@ -3748,7 +3748,7 @@ var _changes = __webpack_require__(26);
 
 var _metalDom = __webpack_require__(2);
 
-var _data = __webpack_require__(8);
+var _data = __webpack_require__(9);
 
 var _metal = __webpack_require__(0);
 
@@ -8815,7 +8815,7 @@ exports.default = Surface;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal_jsx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_metal__);
@@ -8876,10 +8876,9 @@ Home.STATE = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal_jsx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AddIncident__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AddIncident___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_AddIncident__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Incidents__ = __webpack_require__(48);
 
 
@@ -8906,7 +8905,7 @@ class Kid extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 		IncrementalDOM.elementVoid(__WEBPACK_IMPORTED_MODULE_2__components_Incidents__["a" /* default */], null, null, 'incidents', this.state.incidents);
 		IncrementalDOM.elementClose('div');
 		IncrementalDOM.elementOpen('div', null, null, 'class', 'col s12');
-		IncrementalDOM.elementVoid(__WEBPACK_IMPORTED_MODULE_1__components_AddIncident__["default"], null, null, 'kid', this.state.kid);
+		IncrementalDOM.elementVoid(__WEBPACK_IMPORTED_MODULE_1__components_AddIncident__["a" /* default */], null, null, 'kid', this.state.kid);
 		IncrementalDOM.elementClose('div');
 		return IncrementalDOM.elementClose('div');
 	}
@@ -9016,9 +9015,100 @@ var Kidz = {
 
 /***/ }),
 /* 46 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (12:1)\n\n\u001b[0m \u001b[90m 10 | \u001b[39m\t\t\t\u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m \u001b[36mclass\u001b[39m\u001b[33m=\u001b[39m\u001b[32m\"add-incident\"\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 11 | \u001b[39m\t\t\t\t\u001b[33m<\u001b[39m\u001b[33mform\u001b[39m onSubmit\u001b[33m=\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mhandleAddIncident_\u001b[33m.\u001b[39mbind(\u001b[36mthis\u001b[39m)}\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[35m21441284\u001b[39mc07c2718cf59cdf83ba5b5695219c14b\n \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[35m5e5\u001b[39ma14bd1b3a4f62ee709c6f66a3e00bf575423c\n \u001b[90m 14 | \u001b[39m\t\t\t\t\t\u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m \u001b[36mclass\u001b[39m\u001b[33m=\u001b[39m\u001b[32m\"row\"\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 15 | \u001b[39m\t\t\t\t\t\t\u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m \u001b[36mclass\u001b[39m\u001b[33m=\u001b[39m\u001b[32m\"input-field col s6\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n");
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal_jsx__);
+
+
+class AddIncident extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
+	created() {
+		this.data = WeDeploy.data('data.' + window.location.host || window.location.hostname);
+	}
+
+	render() {
+		IncrementalDOM.elementOpen('div', null, null, 'class', 'add-incident');
+		IncrementalDOM.elementOpen('form', null, null, 'onSubmit', this.handleAddIncident_.bind(this));
+		IncrementalDOM.elementOpen('div', null, null, 'class', 'row');
+		IncrementalDOM.elementOpen('div', null, null, 'class', 'input-field col s6');
+		IncrementalDOM.elementOpen('div', null, null, 'class', 'select-wrapper');
+		IncrementalDOM.elementOpen('select', null, null, 'name', 'type');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'candy', 'selected', true);
+		IncrementalDOM.text('Candy');
+		IncrementalDOM.elementClose('option');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'snack');
+		IncrementalDOM.text('Snack');
+		IncrementalDOM.elementClose('option');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'video_games');
+		IncrementalDOM.text('Video Games');
+		IncrementalDOM.elementClose('option');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'tv');
+		IncrementalDOM.text('TV');
+		IncrementalDOM.elementClose('option');
+		IncrementalDOM.elementClose('select');
+		IncrementalDOM.elementClose('div');
+		IncrementalDOM.elementClose('div');
+		IncrementalDOM.elementOpen('div', null, null, 'class', 'input-field col s6');
+		IncrementalDOM.elementOpen('div', null, null, 'class', 'select-wrapper');
+		IncrementalDOM.elementOpen('select', null, null, 'name', 'answer');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'yes');
+		IncrementalDOM.text('Yes');
+		IncrementalDOM.elementClose('option');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'no', 'selected', true);
+		IncrementalDOM.text('No');
+		IncrementalDOM.elementClose('option');
+		IncrementalDOM.elementClose('select');
+		IncrementalDOM.elementClose('div');
+		IncrementalDOM.elementClose('div');
+		IncrementalDOM.elementOpen('div', null, null, 'class', 'col s12');
+		IncrementalDOM.elementOpen('button', null, null, 'class', 'btn btn-submit', 'type', 'submit');
+		IncrementalDOM.text('Add');
+		IncrementalDOM.elementClose('button');
+		IncrementalDOM.elementClose('div');
+		IncrementalDOM.elementClose('div');
+		IncrementalDOM.elementClose('form');
+		return IncrementalDOM.elementClose('div');
+	}
+
+	rendered() {
+		$(document).ready(function () {
+			$('select').material_select();
+		});
+	}
+
+	addIncident_(data) {
+		const { kid } = this.props;
+
+		data.kidId = kid.id;
+
+		this.data.create('incidents', data).then(this.afterAddIncident_.bind(this));
+	}
+
+	afterAddIncident_(incident) {
+		console.log(incident);
+	}
+
+	handleAddIncident_(event) {
+		event.preventDefault();
+
+		const { elements } = event.target;
+
+		this.addIncident_({
+			answer: elements.answer.value,
+			time: Date.now(),
+			type: elements.type.value
+		});
+	}
+}
+
+AddIncident.PROPS = {
+	kid: {
+		value: null
+	}
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (AddIncident);
 
 /***/ }),
 /* 47 */
@@ -9027,7 +9117,7 @@ throw new Error("Module build failed: SyntaxError: Unexpected token (12:1)\n\n\u
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_metal_jsx__);
 
 
@@ -9131,7 +9221,7 @@ AddNewKid.STATE = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal_jsx__);
 
 
@@ -9198,10 +9288,8 @@ Incident.PROPS = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_metal_jsx__);
-throw new Error("Cannot find module \"moment\"");
-
 
 
 
@@ -9236,7 +9324,7 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 				IncrementalDOM.elementClose('i');
 				IncrementalDOM.elementClose('a');
 				return IncrementalDOM.elementClose('li');
-			}, [kid.gender, kid.name, kid.birthday ? __WEBPACK_IMPORTED_MODULE_2_moment___default()(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11', url]);
+			}, [kid.gender, kid.name, kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11', url]);
 		});
 
 		IncrementalDOM.elementOpen('ul', null, null, 'class', 'collapsible', 'data-collapsible', 'accordion');
@@ -14958,7 +15046,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.disposeUnused = disposeUnused;
 exports.schedule = schedule;
 
-var _data = __webpack_require__(8);
+var _data = __webpack_require__(9);
 
 var comps_ = [];
 var disposing_ = false;
@@ -15204,7 +15292,7 @@ exports.patch = patch;
 
 var _metalDom = __webpack_require__(2);
 
-var _data = __webpack_require__(8);
+var _data = __webpack_require__(9);
 
 var _render = __webpack_require__(29);
 

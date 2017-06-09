@@ -1,6 +1,5 @@
 import core from 'metal';
 import JSXComponent from 'metal-jsx';
-import moment from 'moment';
 
 class ListOfKidz extends JSXComponent {
 	render() {
