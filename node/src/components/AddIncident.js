@@ -13,10 +13,10 @@ class AddIncident extends JSXComponent {
 						<div class="input-field col s6">
 							<div class="select-wrapper">
 								<select name="type">
-									<option value="candy" selected>Candy</option>
-									<option value="snack">Snack</option>
-									<option value="video_games">Video Games</option>
-									<option value="tv">TV</option>
+									<option value="candy" selected>🍬 Candy</option>
+									<option value="snack">🍪 Snack</option>
+									<option value="video_games">🎮 Video Games</option>
+									<option value="tv">📺 TV</option>
 								</select>
 							</div>
 						</div>

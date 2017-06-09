@@ -37,10 +37,12 @@ class AddNewKid extends JSXComponent {
 				<div class="input-field">
 					<label for="name">Kid's Name</label>
 
-					<input id="name" name="name" placeholder="Name" required type="text" />
+					<input id="name" name="name" required type="text" />
 				</div>
 
 				<div class="input-field col s12 m6">
+					<label for="gender">Kid's Gender</label>
+
 					<select id="gender" name="gender">
 						<option value="" disabled selected>Choose your kid's gender</option>
 						<option value="👦">Boy</option>
@@ -75,14 +77,12 @@ class AddNewKid extends JSXComponent {
 	}
 
 	rendered() {
-		$(document).ready(function() {
-			$('.datepicker').pickadate({
-				selectMonths: true, // Creates a dropdown to control month
-				selectYears: 50 // Creates a dropdown of 15 years to control year
-			});
-
-			$('select').material_select();
+		$('.datepicker').pickadate({
+			selectMonths: true, // Creates a dropdown to control month
+			selectYears: 50 // Creates a dropdown of 15 years to control year
 		});
+
+		$('select').material_select();
 	}
 }
 

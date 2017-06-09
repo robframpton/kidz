@@ -28,7 +28,12 @@ class Home extends JSXComponent {
 		return (
 			<div class="row">
 				<div class="col s12">
-					<ListOfKidz kids={this.state.kids} />
+					{this.state.kids.length > 0 ?
+						<ListOfKidz kids={this.state.kids} />
+						:
+						''
+					}
+
 				</div>
 
 				<div class="col s12">
@@ -42,7 +47,7 @@ class Home extends JSXComponent {
 Home.STATE = {
 	kids: {
 		validator: core.isObject,
-		value: {}
+		value: []
 	},
 
 	parentId: {
