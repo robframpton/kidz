@@ -14,20 +14,6 @@ class Home extends JSXComponent {
 		this.data
 			.watch('kids')
 			.on('changes', (data) => this.setState({kids: data}));
-
-		this.data
-			.watch('incidents')
-			.on('changes', (data) => {
-				let latest = data.pop();
-
-				let utterThis = new SpeechSynthesisUtterance(latest.answer);
-
-				window.speechSynthesis.speak(utterThis);
-
-				if (window.navigator.vibrate) {
-					window.navigator.vibrate(500);
-				}
-			});
 	}
 
 	render() {
