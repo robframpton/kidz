@@ -18,7 +18,7 @@ class AddNewKid extends JSXComponent {
 		data.create('kids', {
 			name: name.value,
 			gender: gender.value,
-			birthday: birthday.value,
+			//birthday: birthday.value,
 			rating: rating.value
 		}).then(
 			(data) =>  {
