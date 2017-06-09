@@ -1,6 +1,13 @@
 import core from 'metal';
 import JSXComponent from 'metal-jsx';
 
+const KID_GENDER_ICON_MAP = {
+	boy: '👦',
+	girl: '👧',
+	gorilla: '🦍',
+	poop: '🦍'
+}
+
 class ListOfKidz extends JSXComponent {
 	render() {
 		let {kids} = this.props;
@@ -13,7 +20,7 @@ class ListOfKidz extends JSXComponent {
 			return (
 				<li class="collection-item avatar">
 					<span class="circle">
-						{kid.gender}
+						{KID_GENDER_ICON_MAP[kid.gender]}
 					</span>
 
 					<span class="title">{kid.name}</span>
