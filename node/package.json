@@ -20,6 +20,7 @@
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
+    "konami-code": "^0.2.1",
     "metal": "^2.6.4",
     "metal-jsx": "^2.10.0",
     "metal-soy": "^2.10.0",

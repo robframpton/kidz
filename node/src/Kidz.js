@@ -3,7 +3,14 @@
 import Component from 'metal-component';
 import Home from './views/Home';
 import Kid from './views/Kid';
+import KonamiCode from 'konami-code';
 import Router from 'metal-router';
+
+const konami = new KonamiCode();
+
+konami.listen(() => {
+	window.location.href = 'http://harambe.wedeploy.io';
+});
 
 // Routing from JavaScript -----------------------------------------------------
 
