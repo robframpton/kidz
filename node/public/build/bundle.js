@@ -9302,7 +9302,7 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 		data.create('kids', {
 			name: name.value,
 			gender: gender.value,
-			birthday: birthday.value,
+			//birthday: birthday.value,
 			rating: rating.value
 		}).then(data => {
 			name.value = '';
