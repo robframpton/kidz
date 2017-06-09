@@ -65,11 +65,17 @@ class AddIncident extends JSXComponent {
 
 		const {elements} = event.target;
 
-		this.addIncident_({
-			answer: elements.answer.value,
-			time: Date.now(),
-			type: elements.type.value
-		});
+		let utterThis = new SpeechSynthesisUtterance(`Are you sure this incident happened?`);
+
+		window.speechSynthesis.speak(utterThis);
+
+		if (confirm(`Are you sure this incident happened?`)) {
+			this.addIncident_({
+				answer: elements.answer.value,
+				time: Date.now(),
+				type: elements.type.value
+			});
+		}
 	}
 }
 
