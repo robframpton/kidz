@@ -15,21 +15,27 @@ class AddNewKid extends JSXComponent {
 
 		let {name, gender, birthday, rating} = target;
 
-		data.create('kids', {
-			name: name.value,
-			gender: gender.value,
-			//birthday: birthday.value,
-			rating: rating.value
-		}).then(
-			(data) =>  {
-				name.value = '';
-				gender.value = '';
-				birthday.value = '';
-				rating.value = 10;
+		let utterThis = new SpeechSynthesisUtterance(`Are you sure ${name.value} is yours?`);
 
-				this.setState({isAddingKid: false});
-			}
-		)
+		window.speechSynthesis.speak(utterThis);
+
+		if (confirm(`Are you sure ${name.value} is yours?`)) {
+			data.create('kids', {
+				name: name.value,
+				gender: gender.value,
+				//birthday: birthday.value,
+				rating: rating.value
+			}).then(
+				(data) =>  {
+					name.value = '';
+					gender.value = '';
+					birthday.value = '';
+					rating.value = 10;
+
+					this.setState({isAddingKid: false});
+				}
+			)
+		}
 	}
 
 	render() {
