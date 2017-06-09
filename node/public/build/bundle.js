@@ -9038,10 +9038,17 @@ class Kid extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 			return '';
 		}
 
+		IncrementalDOM.elementOpen('div');
 		IncrementalDOM.elementOpen('h2');
 		IncrementalDOM.text('Kid: ');
 		iDOMHelpers.renderArbitrary(kid.name);
-		return IncrementalDOM.elementClose('h2');
+		IncrementalDOM.elementClose('h2');
+		IncrementalDOM.elementOpen('p');
+		IncrementalDOM.text('Rated ');
+		iDOMHelpers.renderArbitrary(kid.rating ? kid.rating : '11');
+		IncrementalDOM.text('/10');
+		IncrementalDOM.elementClose('p');
+		return IncrementalDOM.elementClose('div');
 	}
 
 	afterFetchIncidents_(incidents) {
@@ -9260,12 +9267,19 @@ konami.listen(() => {
 	window.location.href = 'http://harambe.wedeploy.io';
 });
 
+const TYPE_INCIDENT_MAP = {
+	candy: 'candy',
+	snack: 'snack',
+	tv: 'tv',
+	video_games: 'video games'
+};
+
 WeDeploy.data('data.' + window.location.host || window.location.hostname).watch('incidents').on('changes', data => {
 	let latest = data.pop();
 
 	let utterThis = new SpeechSynthesisUtterance(`Parent answered
 			${latest.kidName ? latest.kidName : ''} ${latest.answer},to request
-			for ${latest.type} ${moment(latest.time).fromNow()}`);
+			for ${TYPE_INCIDENT_MAP[latest.type]} ${moment(latest.time).fromNow()}`);
 
 	window.speechSynthesis.speak(utterThis);
 
@@ -9711,6 +9725,7 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 		let kidItems = kids.map(kid => {
 			return iDOMHelpers.jsxWrapper(function (_GENDER_EMOJI_MAP$kid, _kid$name, _ref, _ref2) {
 				IncrementalDOM.elementOpen('li', null, null, 'class', 'collection-item avatar');
+				IncrementalDOM.elementOpen('a', null, null, 'href', `/kid/${kid.id}`);
 				IncrementalDOM.elementOpen('span', null, null, 'class', 'circle');
 				iDOMHelpers.renderArbitrary(_GENDER_EMOJI_MAP$kid);
 				IncrementalDOM.elementClose('span');
@@ -9725,10 +9740,6 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 				iDOMHelpers.renderArbitrary(_ref2);
 				IncrementalDOM.text('/10 ');
 				IncrementalDOM.elementClose('p');
-				IncrementalDOM.elementOpen('a', null, null, 'href', `/kid/${kid.id}`, 'class', 'secondary-content');
-				IncrementalDOM.elementOpen('i', null, null, 'class', 'material-icons');
-				IncrementalDOM.text('link');
-				IncrementalDOM.elementClose('i');
 				IncrementalDOM.elementClose('a');
 				return IncrementalDOM.elementClose('li');
 			}, [GENDER_EMOJI_MAP[kid.gender], kid.name, kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11']);
