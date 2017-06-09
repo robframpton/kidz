@@ -8848,7 +8848,7 @@ class Home extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 	render() {
 		IncrementalDOM.elementOpen('div', null, null, 'class', 'row');
 		IncrementalDOM.elementOpen('div', null, null, 'class', 'col s12');
-		IncrementalDOM.elementVoid(__WEBPACK_IMPORTED_MODULE_2__components_ListOfKidz__["a" /* default */], null, null, 'kids', this.state.kids);
+		iDOMHelpers.renderArbitrary(this.state.kids.length > 0 ? IncrementalDOM.elementVoid(__WEBPACK_IMPORTED_MODULE_2__components_ListOfKidz__["a" /* default */], null, null, 'kids', this.state.kids) : '');
 		IncrementalDOM.elementClose('div');
 		IncrementalDOM.elementOpen('div', null, null, 'class', 'col s12');
 		IncrementalDOM.elementVoid(__WEBPACK_IMPORTED_MODULE_3__components_AddNewKid__["a" /* default */]);
@@ -8860,7 +8860,7 @@ class Home extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 Home.STATE = {
 	kids: {
 		validator: __WEBPACK_IMPORTED_MODULE_1_metal___default.a.isObject,
-		value: {}
+		value: []
 	},
 
 	parentId: {
@@ -9183,16 +9183,16 @@ class AddIncident extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 		IncrementalDOM.elementOpen('div', null, null, 'class', 'select-wrapper');
 		IncrementalDOM.elementOpen('select', null, null, 'name', 'type');
 		IncrementalDOM.elementOpen('option', null, null, 'value', 'candy', 'selected', true);
-		IncrementalDOM.text('Candy');
+		IncrementalDOM.text('\uD83C\uDF6C Candy');
 		IncrementalDOM.elementClose('option');
 		IncrementalDOM.elementOpen('option', null, null, 'value', 'snack');
-		IncrementalDOM.text('Snack');
+		IncrementalDOM.text('\uD83C\uDF6A Snack');
 		IncrementalDOM.elementClose('option');
 		IncrementalDOM.elementOpen('option', null, null, 'value', 'video_games');
-		IncrementalDOM.text('Video Games');
+		IncrementalDOM.text('\uD83C\uDFAE Video Games');
 		IncrementalDOM.elementClose('option');
 		IncrementalDOM.elementOpen('option', null, null, 'value', 'tv');
-		IncrementalDOM.text('TV');
+		IncrementalDOM.text('\uD83D\uDCFA TV');
 		IncrementalDOM.elementClose('option');
 		IncrementalDOM.elementClose('select');
 		IncrementalDOM.elementClose('div');
@@ -9304,9 +9304,12 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 		IncrementalDOM.elementOpen('label', null, null, 'for', 'name');
 		IncrementalDOM.text('Kid\'s Name');
 		IncrementalDOM.elementClose('label');
-		IncrementalDOM.elementVoid('input', null, null, 'id', 'name', 'name', 'name', 'placeholder', 'Name', 'required', true, 'type', 'text');
+		IncrementalDOM.elementVoid('input', null, null, 'id', 'name', 'name', 'name', 'required', true, 'type', 'text');
 		IncrementalDOM.elementClose('div');
 		IncrementalDOM.elementOpen('div', null, null, 'class', 'input-field col s12 m6');
+		IncrementalDOM.elementOpen('label', null, null, 'for', 'gender');
+		IncrementalDOM.text('Kid\'s Gender');
+		IncrementalDOM.elementClose('label');
 		IncrementalDOM.elementOpen('select', null, null, 'id', 'gender', 'name', 'gender');
 		IncrementalDOM.elementOpen('option', null, null, 'value', '', 'disabled', true, 'selected', true);
 		IncrementalDOM.text('Choose your kid\'s gender');
@@ -9344,14 +9347,12 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 	}
 
 	rendered() {
-		$(document).ready(function () {
-			$('.datepicker').pickadate({
-				selectMonths: true, // Creates a dropdown to control month
-				selectYears: 50 // Creates a dropdown of 15 years to control year
-			});
-
-			$('select').material_select();
+		$('.datepicker').pickadate({
+			selectMonths: true, // Creates a dropdown to control month
+			selectYears: 50 // Creates a dropdown of 15 years to control year
 		});
+
+		$('select').material_select();
 	}
 }
 
@@ -9408,13 +9409,13 @@ class Incident extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 
 	formatType_(type) {
 		if (type === 'candy') {
-			type = 'Candy';
+			type = '🍬 Candy';
 		} else if (type === 'snack') {
-			type = 'Snack';
+			type = '🍪 Snack';
 		} else if (type === 'tv') {
-			type = 'TV';
+			type = '📺 TV';
 		} else if (type === 'video_games') {
-			type = 'Video Games';
+			type = '🎮 Video Games';
 		}
 
 		return type;
@@ -9438,6 +9439,8 @@ Incident.PROPS = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_metal_jsx__);
+throw new Error("Cannot find module \"moment\"");
+
 
 
 
@@ -9450,6 +9453,8 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 		let headerCSSClass = `collapsible-header ${kids.length <= 10 ? 'active' : ''}`;
 
 		let kidItems = kids.map(kid => {
+			let url = `/kid/${kid.id}`;
+
 			return iDOMHelpers.jsxWrapper(function (_kid$gender, _kid$name, _ref, _ref2, _url) {
 				IncrementalDOM.elementOpen('li', null, null, 'class', 'collection-item avatar');
 				IncrementalDOM.elementOpen('span', null, null, 'class', 'circle');
@@ -9472,7 +9477,7 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 				IncrementalDOM.elementClose('i');
 				IncrementalDOM.elementClose('a');
 				return IncrementalDOM.elementClose('li');
-			}, [kid.gender, kid.name, kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11', url]);
+			}, [kid.gender, kid.name, kid.birthday ? __WEBPACK_IMPORTED_MODULE_2_moment___default()(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11', url]);
 		});
 
 		IncrementalDOM.elementOpen('ul', null, null, 'class', 'collapsible', 'data-collapsible', 'accordion');
@@ -9490,9 +9495,7 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 	}
 
 	rendered() {
-		$(document).ready(function () {
-			$('.collapsible').collapsible();
-		});
+		$('.collapsible').collapsible();
 	}
 }
 
