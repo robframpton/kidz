@@ -7,21 +7,27 @@ class Home extends JSXComponent {
 	created() {
 		this.data = WeDeploy.data('data.' + window.location.host || window.location.hostname);
 
-		this._fetchChildren();
-
-		this._handleKidzUpdate();
-	}
-
-	_fetchChildren() {
-		// TO DO: Fetch based on parentIds
-		this.data.get('kids')
+		this.data
+			.get('kids')
 			.then((kids) => this.setState({kids: kids}));
-	}
 
-	_handleKidzUpdate() {
-		// TO DO: Fetch based on parentId
-		this.data.watch('kids')
+		this.data
+			.watch('kids')
 			.on('changes', (data) => this.setState({kids: data}));
+
+		this.data
+			.watch('incidents')
+			.on('changes', (data) => {
+				let latest = data.pop();
+
+				let utterThis = new SpeechSynthesisUtterance(latest.answer);
+
+				window.speechSynthesis.speak(utterThis);
+
+				if (window.navigator.vibrate) {
+					window.navigator.vibrate(500);
+				}
+			});
 	}
 
 	render() {

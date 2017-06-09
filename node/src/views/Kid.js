@@ -21,6 +21,21 @@ class Kid extends JSXComponent {
 			.where('id', this.props.router.params.kidId)
 			.get('kids')
 			.then(this.afterFetchKid_.bind(this));
+
+		this.data
+			.where('kidId', this.props.router.params.kidId)
+			.watch('incidents')
+			.on('changes', (data) => {
+				let latest = data.pop();
+
+				let utterThis = new SpeechSynthesisUtterance(latest.answer);
+
+				window.speechSynthesis.speak(utterThis);
+
+				if (window.navigator.vibrate) {
+					window.navigator.vibrate(500);
+				}
+			});
 	}
 
 	render() {
