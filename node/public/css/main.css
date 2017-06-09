@@ -1,0 +1,21 @@
+.incident {
+	display: flex;
+	justify-content: space-between;
+}
+
+.incident-property {
+	border-radius: 10px;
+	font-size: 20px;
+	margin: 0 20px;
+	padding: 5px 10px;
+}
+
+.incident-property.answer-no {
+	background-color: #F55B41;
+	color: #FFF;
+}
+
+.incident-property.answer-yes {
+	background-color: #44DC66;
+	color: #FFF;
+}

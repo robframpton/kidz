@@ -8,21 +8,42 @@ class Incident extends JSXComponent {
 
 		let incidentItems = incidents.map(incident => {
 			return (
-				<li>
-					<span>{incident.type}: </span>
-					<span>{incident.answer}: </span>
-					<span>{incident.time}</span>
+				<li class="collection-item incident">
+					<span class="incident-property">{this.formatType_(incident.type)}</span>
+					<span class={'incident-property answer-' + incident.answer}>{incident.answer}</span>
+					<span class="incident-property">{this.formatDate_(incident.time)}</span>
 				</li>
 			);
 		});
 
 		return (
 			<div class="incidents">
-				<ul>
+				<ul class="collection">
 					{incidentItems}
 				</ul>
 			</div>
 		);
+	}
+
+	formatDate_(date) {
+		return moment(date).format('h:mm:ss a, MMMM Do');
+	}
+
+	formatType_(type) {
+		if (type === 'candy') {
+			type = 'Candy';
+		}
+		else if (type === 'snack') {
+			type = 'Snack';
+		}
+		else if (type === 'tv') {
+			type = 'TV';
+		}
+		else if (type === 'video_games') {
+			type = 'Video Games';
+		}
+
+		return type;
 	}
 }
 

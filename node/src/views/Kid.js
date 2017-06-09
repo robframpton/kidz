@@ -49,7 +49,7 @@ class Kid extends JSXComponent {
 		}
 
 		return (
-			<h1>Kid: {kid.name}</h1>
+			<h2>Kid: {kid.name}</h2>
 		);
 	}
 
