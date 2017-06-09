@@ -2,6 +2,7 @@
 
 import Component from 'metal-component';
 import Home from './Home';
+import Kid from './views/Kid';
 import Router from 'metal-router';
 
 // Routing from JavaScript -----------------------------------------------------
@@ -12,6 +13,12 @@ var Kidz = {
 			element: '#container',
 			path: '/',
 			component: Home
+		});
+
+		Component.render(Router, {
+			component: Kid,
+			element: '#container',
+			path: '/kid/:kidId'
 		});
 
 		// Dispatch router to the current browser url --------------------------
