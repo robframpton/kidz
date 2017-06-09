@@ -16,7 +16,7 @@ class Incident extends JSXComponent {
 						<div class="col s2">
 							<span class={'incident-property answer-' + incident.answer}>{incident.answer}</span>
 						</div>
-						<div class="col s6">
+						<div class="col s6 right-align">
 							<span class="incident-property">{this.formatDate_(incident.time)}</span>
 						</div>
 					</div>
