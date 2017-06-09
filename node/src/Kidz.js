@@ -1,7 +1,7 @@
 'use strict';
 
 import Component from 'metal-component';
-import Home from './Home';
+import Home from './views/Home';
 import Kid from './views/Kid';
 import Router from 'metal-router';
 
