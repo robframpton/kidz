@@ -15,7 +15,7 @@ class AddNewKid extends JSXComponent {
 
 		let {name, gender, birthday, rating} = target;
 
-		if (name === 'harambe') {
+		if (name.value === 'harambe') {
 			window.location.href='http://harambe.wedeploy.io';
 		}
 		else {
