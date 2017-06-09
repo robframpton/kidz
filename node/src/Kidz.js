@@ -12,6 +12,13 @@ konami.listen(() => {
 	window.location.href = 'http://harambe.wedeploy.io';
 });
 
+const TYPE_INCIDENT_MAP = {
+	candy: 'candy',
+	snack: 'snack',
+	tv: 'tv',
+	video_games: 'video games'
+}
+
 WeDeploy.data('data.' + window.location.host || window.location.hostname)
 	.watch('incidents')
 	.on('changes', (data) => {
@@ -19,7 +26,7 @@ WeDeploy.data('data.' + window.location.host || window.location.hostname)
 
 		let utterThis = new SpeechSynthesisUtterance(`Parent answered
 			${latest.kidName ? latest.kidName : ''} ${latest.answer},to request
-			for ${latest.type} ${moment(latest.time).fromNow()}`);
+			for ${TYPE_INCIDENT_MAP[latest.type]} ${moment(latest.time).fromNow()}`);
 
 		window.speechSynthesis.speak(utterThis);
 
