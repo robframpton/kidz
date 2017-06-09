@@ -8833,18 +8833,6 @@ class Home extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 		this.data.get('kids').then(kids => this.setState({ kids: kids }));
 
 		this.data.watch('kids').on('changes', data => this.setState({ kids: data }));
-
-		this.data.watch('incidents').on('changes', data => {
-			let latest = data.pop();
-
-			let utterThis = new SpeechSynthesisUtterance(latest.answer);
-
-			window.speechSynthesis.speak(utterThis);
-
-			if (window.navigator.vibrate) {
-				window.navigator.vibrate(500);
-			}
-		});
 	}
 
 	render() {
@@ -8887,6 +8875,13 @@ Home.STATE = {
 
 
 
+const KID_GENDER_COLOR_MAP = {
+	boy: 'blue lighten-4',
+	girl: 'pink lighten-4',
+	gorilla: 'grey lighten-2',
+	poop: 'brown lighten-2'
+};
+
 class Kid extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 	created() {
 		this.data = WeDeploy.data('data.' + window.location.host || window.location.hostname);
@@ -8896,22 +8891,18 @@ class Kid extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 		this.data.where('kidId', this.props.router.params.kidId).watch('incidents').on('changes', this.afterFetchIncidents_.bind(this));
 
 		this.data.where('id', this.props.router.params.kidId).get('kids').then(this.afterFetchKid_.bind(this));
-
-		this.data.where('kidId', this.props.router.params.kidId).watch('incidents').on('changes', data => {
-			let latest = data.pop();
-
-			let utterThis = new SpeechSynthesisUtterance(latest.answer);
-
-			window.speechSynthesis.speak(utterThis);
-
-			if (window.navigator.vibrate) {
-				window.navigator.vibrate(500);
-			}
-		});
 	}
 
 	render() {
-		IncrementalDOM.elementOpen('div', null, null, 'className', 'kid row');
+		let classes = 'card kid row';
+
+		const { kid } = this.state;
+
+		if (kid) {
+			classes = classes + ' ' + KID_GENDER_COLOR_MAP[kid.gender];
+		}
+
+		IncrementalDOM.elementOpen('div', null, null, 'class', classes);
 		IncrementalDOM.elementOpen('div', null, null, 'class', 'col s12');
 		iDOMHelpers.renderArbitrary(this.renderKid_());
 		IncrementalDOM.elementClose('div');
@@ -9151,6 +9142,20 @@ konami.listen(() => {
 	window.location.href = 'http://harambe.wedeploy.io';
 });
 
+WeDeploy.data('data.' + window.location.host || window.location.hostname).watch('incidents').on('changes', data => {
+	let latest = data.pop();
+
+	let utterThis = new SpeechSynthesisUtterance(`Parent answered
+			${latest.kidName ? latest.kidName : ''} ${latest.answer},to request
+			for ${latest.type} ${moment(latest.time).fromNow()}`);
+
+	window.speechSynthesis.speak(utterThis);
+
+	if (window.navigator.vibrate) {
+		window.navigator.vibrate(500);
+	}
+});
+
 // Routing from JavaScript -----------------------------------------------------
 
 var Kidz = {
@@ -9243,6 +9248,7 @@ class AddIncident extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 		const { kid } = this.props;
 
 		data.kidId = kid.id;
+		data.kidName = kid.name;
 
 		this.data.create('incidents', data).then(this.afterAddIncident_.bind(this));
 	}
@@ -9556,9 +9562,7 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 		let headerCSSClass = `collapsible-header ${kids.length <= 10 ? 'active' : ''}`;
 
 		let kidItems = kids.map(kid => {
-			let url = `/kid/${kid.id}`;
-
-			return iDOMHelpers.jsxWrapper(function (_kid$gender, _kid$name, _ref, _ref2, _url) {
+			return iDOMHelpers.jsxWrapper(function (_kid$gender, _kid$name, _ref, _ref2) {
 				IncrementalDOM.elementOpen('li', null, null, 'class', 'collection-item avatar');
 				IncrementalDOM.elementOpen('span', null, null, 'class', 'circle');
 				iDOMHelpers.renderArbitrary(_kid$gender);
@@ -9574,13 +9578,13 @@ class ListOfKidz extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 				iDOMHelpers.renderArbitrary(_ref2);
 				IncrementalDOM.text('/10 ');
 				IncrementalDOM.elementClose('p');
-				IncrementalDOM.elementOpen('a', null, null, 'href', _url, 'class', 'secondary-content');
+				IncrementalDOM.elementOpen('a', null, null, 'href', `/kid/${kid.id}`, 'class', 'secondary-content');
 				IncrementalDOM.elementOpen('i', null, null, 'class', 'material-icons');
 				IncrementalDOM.text('link');
 				IncrementalDOM.elementClose('i');
 				IncrementalDOM.elementClose('a');
 				return IncrementalDOM.elementClose('li');
-			}, [kid.gender, kid.name, kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11', url]);
+			}, [kid.gender, kid.name, kid.birthday ? moment(kid.birthday).format('MMMM Do YYYY') : '', kid.rating ? kid.rating : '11']);
 		});
 
 		IncrementalDOM.elementOpen('ul', null, null, 'class', 'collapsible', 'data-collapsible', 'accordion');
