@@ -1,0 +1,34 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Make sure your kid doesn't manipulate you.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "npm test"
+  },
+  "author": "Rob Frampton <rob.g.frampton@gmail.com> (https://github.com/Robert-Frampton)",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.4.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-metal": "^4.1.0",
+    "babel-preset-metal-jsx": "^0.1.1",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "fs-extra": "^3.0.1",
+    "metal": "^2.6.4",
+    "metal-jsx": "^2.10.0",
+    "metal-soy": "^2.10.0",
+    "metal-tools-soy": "^4.1.1",
+    "webpack": "^2.6.1",
+    "wedeploy": "^2.1.4",
+    "wedeploy-middleware": "^1.5.0"
+  },
+  "devDependencies": {
+    "metal-router": "*"
+  }
+}

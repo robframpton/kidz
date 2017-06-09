@@ -1,0 +1,10 @@
+[
+  {
+    "data": true,
+    "path": "/kids/*"
+  },
+  {
+    "data": true,
+    "path": "/incidents/*"
+  }
+]
