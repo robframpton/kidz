@@ -12,14 +12,22 @@ class AddNewKid extends JSXComponent {
 		let {data} = this;
 		this.setState({isAddingKid: true});
 
+		let {name, gender, birthday} = target;
+
 
 
 		data.create('kids', {
-			name: target.name.value,
-			gender: target.gender.value,
-			birthday: target.birthday.value
+			name: name.value,
+			gender: gender.value,
+			birthday: birthday.value
 		}).then(
-			(data) => this.setState({isAddingKid: false})
+			(data) =>  {
+				name.value = '';
+				gender.value = '';
+				birthday.value = '';
+
+				this.setState({isAddingKid: false});
+			}
 		)
 	}
 
