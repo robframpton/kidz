@@ -66,7 +66,11 @@ class Kid extends JSXComponent {
 		}
 
 		return (
-			<h2>Kid: {kid.name}</h2>
+			<div>
+				<h2>Kid: {kid.name}</h2>
+
+				<p>Rated {kid.rating ? kid.rating : '11'}/10</p>
+			</div>
 		);
 	}
 
