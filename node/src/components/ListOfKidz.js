@@ -17,6 +17,8 @@ class ListOfKidz extends JSXComponent {
 										<a href={url}>
 											{kid.name}
 										</a>
+
+										{kid.gender} {kid.birthday}
 									</li>
 								);
 							}

@@ -12,19 +12,19 @@ class AddNewKid extends JSXComponent {
 		let {data} = this;
 		this.setState({isAddingKid: true});
 
-		let {name, gender, birthday} = target;
-
-
+		let {name, gender, birthday, rating} = target;
 
 		data.create('kids', {
 			name: name.value,
 			gender: gender.value,
-			birthday: birthday.value
+			birthday: birthday.value,
+			rating: rating.value
 		}).then(
 			(data) =>  {
 				name.value = '';
 				gender.value = '';
 				birthday.value = '';
+				rating.value = 10;
 
 				this.setState({isAddingKid: false});
 			}
@@ -34,26 +34,42 @@ class AddNewKid extends JSXComponent {
 	render() {
 		return(
 			<form class="add-new-kid-form" onSubmit={this._handleAddNewKid.bind(this)}>
-				<div class="control-group">
+				<div class="input-field">
 					<label for="name">Name</label>
 
 					<input id="name" name="name" placeholder="Name" required type="text" />
 				</div>
 
-				<div class="control-group">
-					<label for="gender">Gender</label>
+				<div class="input-field">
+					<p>
+						<input id="gorilla" name="gender" type="radio" value="🦍" /> <label for="gorilla" >🦍</label>
+					</p>
 
-					<select id="gender" name="gender" required>
-						<option value="">Select Gender</option>
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-					</select>
+					<p>
+						<input id="girl" name="gender" type="radio" value="👧" /> <label for="girl" >👧</label>
+					</p>
+
+					<p>
+						<input id="boy" name="gender" type="radio" value="👦" /> <label for="boy" >👦</label>
+					</p>
+
+					<p>
+						<input id="poop" name="gender" type="radio" value="💩" /> <label for="poop" >💩</label>
+					</p>
 				</div>
 
-				<div class="control-group">
+				<div class="input-field">
 					<label for="birthday">Birthday</label>
 
-					<input id="birthday" name="birthday" placeholder="dd/mm/yyyy" required type="date" />
+					<input class="datepicker" id="birthday" name="birthday" placeholder="dd/mm/yyyy" required type="date" />
+				</div>
+
+				<div class="input-field">
+					<label for="rating">How much do you love this child?</label>
+
+					<p class="range-field">
+						<input type="range" id="rating" name="rating" min="0" max="10" />
+					</p>
 				</div>
 
 				{this.state.isAddingKid ?'':
