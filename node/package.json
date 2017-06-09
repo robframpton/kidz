@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "build": "webpack src/Kidz.js public/build/bundle.js",
     "test": "npm test"
   },
   "author": "Rob Frampton <rob.g.frampton@gmail.com> (https://github.com/Robert-Frampton)",
@@ -14,7 +15,6 @@
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-metal": "^4.1.0",
-    "babel-preset-metal-jsx": "^0.1.1",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.6",
@@ -29,6 +29,10 @@
     "wedeploy-middleware": "^1.5.0"
   },
   "devDependencies": {
+    "babel-preset-metal-jsx": "^0.1.1",
     "metal-router": "*"
+  },
+  "babel": {
+    "presets": ["metal-jsx"]
   }
 }
