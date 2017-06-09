@@ -8830,19 +8830,21 @@ class Home extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 	created() {
 		this.data = WeDeploy.data('data.' + window.location.host || window.location.hostname);
 
-		this._fetchChildren();
-
-		this._handleKidzUpdate();
-	}
-
-	_fetchChildren() {
-		// TO DO: Fetch based on parentIds
 		this.data.get('kids').then(kids => this.setState({ kids: kids }));
-	}
 
-	_handleKidzUpdate() {
-		// TO DO: Fetch based on parentId
 		this.data.watch('kids').on('changes', data => this.setState({ kids: data }));
+
+		this.data.watch('incidents').on('changes', data => {
+			let latest = data.pop();
+
+			let utterThis = new SpeechSynthesisUtterance(latest.answer);
+
+			window.speechSynthesis.speak(utterThis);
+
+			if (window.navigator.vibrate) {
+				window.navigator.vibrate(500);
+			}
+		});
 	}
 
 	render() {
@@ -8894,6 +8896,18 @@ class Kid extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 		this.data.where('kidId', this.props.router.params.kidId).watch('incidents').on('changes', this.afterFetchIncidents_.bind(this));
 
 		this.data.where('id', this.props.router.params.kidId).get('kids').then(this.afterFetchKid_.bind(this));
+
+		this.data.where('kidId', this.props.router.params.kidId).watch('incidents').on('changes', data => {
+			let latest = data.pop();
+
+			let utterThis = new SpeechSynthesisUtterance(latest.answer);
+
+			window.speechSynthesis.speak(utterThis);
+
+			if (window.navigator.vibrate) {
+				window.navigator.vibrate(500);
+			}
+		});
 	}
 
 	render() {
@@ -9316,17 +9330,17 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 		IncrementalDOM.elementOpen('option', null, null, 'value', '', 'disabled', true, 'selected', true);
 		IncrementalDOM.text('Choose your kid\'s gender');
 		IncrementalDOM.elementClose('option');
-		IncrementalDOM.elementOpen('option', null, null, 'value', '\uD83D\uDC66');
-		IncrementalDOM.text('Boy');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'boy');
+		IncrementalDOM.text('\uD83D\uDC66 Boy');
 		IncrementalDOM.elementClose('option');
-		IncrementalDOM.elementOpen('option', null, null, 'value', '\uD83D\uDC67');
-		IncrementalDOM.text('Girl');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'girl');
+		IncrementalDOM.text('\uD83D\uDC67 Girl');
 		IncrementalDOM.elementClose('option');
-		IncrementalDOM.elementOpen('option', null, null, 'value', '\uD83E\uDD8D');
-		IncrementalDOM.text('Gorilla');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'gorilla');
+		IncrementalDOM.text('\uD83E\uDD8D Gorilla');
 		IncrementalDOM.elementClose('option');
-		IncrementalDOM.elementOpen('option', null, null, 'value', '\uD83D\uDCA9');
-		IncrementalDOM.text('Poop');
+		IncrementalDOM.elementOpen('option', null, null, 'value', 'poop');
+		IncrementalDOM.text('\uD83D\uDCA9 Poop');
 		IncrementalDOM.elementClose('option');
 		IncrementalDOM.elementClose('select');
 		IncrementalDOM.elementClose('div');
@@ -9346,10 +9360,7 @@ class AddNewKid extends __WEBPACK_IMPORTED_MODULE_1_metal_jsx___default.a {
 	}
 
 	rendered() {
-		$('.datepicker').pickadate({
-			selectMonths: true, // Creates a dropdown to control month
-			selectYears: 50 // Creates a dropdown of 15 years to control year
-		});
+		$('.datepicker').pickadate();
 
 		$('select').material_select();
 	}
@@ -9373,6 +9384,12 @@ AddNewKid.STATE = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_metal_jsx__);
 
 
+const TYPE_MAX_MAP = {
+	month: 12,
+	day: 31,
+	year: 2017
+};
+
 class BirthdaySelector extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 	created() {
 		this._increment = 2;
@@ -9386,6 +9403,10 @@ class BirthdaySelector extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a
 				this._increment = -1;
 			} else {
 				this._increment = 2;
+			}
+
+			if (this.state[type] > TYPE_MAX_MAP[type]) {
+				this.state[type] = 0;
 			}
 		};
 	}
@@ -9470,7 +9491,7 @@ class Incident extends __WEBPACK_IMPORTED_MODULE_0_metal_jsx___default.a {
 				iDOMHelpers.renderArbitrary(_incident$answer);
 				IncrementalDOM.elementClose("span");
 				IncrementalDOM.elementClose("div");
-				IncrementalDOM.elementOpen("div", null, null, "class", "col s6");
+				IncrementalDOM.elementOpen("div", null, null, "class", "col s6 right-align");
 				IncrementalDOM.elementOpen("span", null, null, "class", "incident-property");
 				iDOMHelpers.renderArbitrary(_formatDate_);
 				IncrementalDOM.elementClose("span");
